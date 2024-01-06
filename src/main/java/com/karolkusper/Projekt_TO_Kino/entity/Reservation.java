@@ -22,6 +22,9 @@ public class Reservation {
     @Column(name="client_email")
     String clientEmail;
 
+//    @Column(name="client_id")
+//    int clientId;
+
     public Reservation(){
 
     }
@@ -30,6 +33,7 @@ public class Reservation {
         this.seat = seat;
         this.clientName = clientName;
         this.clientEmail = clientEmail;
+//        this.clientId=clientId;
     }
 
     public int getReservationId() {
@@ -71,6 +75,8 @@ public class Reservation {
     public void setClientEmail(String clientEmail) {
         this.clientEmail = clientEmail;
     }
+
+
 
     @Override
     public String toString() {

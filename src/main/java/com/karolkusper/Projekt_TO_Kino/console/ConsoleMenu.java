@@ -1,4 +1,4 @@
-package com.karolkusper.Projekt_TO_Kino.cosole;
+package com.karolkusper.Projekt_TO_Kino.console;
 
 import com.karolkusper.Projekt_TO_Kino.service.CinemaService;
 
@@ -59,7 +59,6 @@ public class ConsoleMenu {
         System.out.println("5. Add a screening");
         System.out.println("6. Add a film");
         System.out.println("7. Cancel reservation (admin)");
-        System.out.println("8. Exit");
         System.out.print("Enter your choice: ");
     }
 }
