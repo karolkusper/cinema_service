@@ -1,39 +1,42 @@
 package com.karolkusper.Projekt_TO_Kino.command;
 
+import com.karolkusper.Projekt_TO_Kino.chainOfRespHandlers.AddFilmHandler;
+import com.karolkusper.Projekt_TO_Kino.chainOfRespHandlers.AddScreeningHandler;
+import com.karolkusper.Projekt_TO_Kino.chainOfRespHandlers.DisplayReservationHandler;
+import com.karolkusper.Projekt_TO_Kino.chainOfRespHandlers.CancelReservationHandler;
 import com.karolkusper.Projekt_TO_Kino.service.CinemaService;
 
 import java.util.Scanner;
 
-public class AdminCommand implements Command{
+public class AdminCommand implements Command {
 
-    private final CinemaService cinemaService; //receiver
+    private final CinemaService cinemaService; // receiver
 
     public AdminCommand(CinemaService cinemaService) {
         this.cinemaService = cinemaService;
     }
+
     @Override
     public void execute() {
         Scanner scanner = new Scanner(System.in);
         int adminChoice;
 
-        do{
+        do {
             cinemaService.showAdminMenu();
             adminChoice = scanner.nextInt();
 
             switch (adminChoice) {
                 case 1:
-                    new AddScreeningCommand(cinemaService).execute();
+                    new AddScreeningHandler(cinemaService).handleRequest();
                     break;
                 case 2:
-                    new AddFilmCommand(cinemaService).execute();
+                    new AddFilmHandler(cinemaService).handleRequest();
                     break;
                 case 3:
-                    new DisplayReservationsCommand(cinemaService).execute();
+                    new DisplayReservationHandler(cinemaService).handleRequest();
                     break;
                 case 4:
-                    System.out.println("Enter reservation id: ");
-                    int id = scanner.nextInt();
-                    new CancelReservationsCommand(cinemaService,id).execute();
+                    new CancelReservationHandler(cinemaService).handleRequest();
                     break;
                 case 5:
                     System.out.println("Exiting admin menu.");
@@ -42,7 +45,6 @@ public class AdminCommand implements Command{
                     System.out.println("Invalid choice.");
                     break;
             }
-        }while (adminChoice!=5);
-
+        } while (adminChoice != 5);
     }
 }

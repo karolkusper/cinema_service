@@ -1,6 +1,10 @@
 package com.karolkusper.Projekt_TO_Kino.command;
 
+import com.karolkusper.Projekt_TO_Kino.chainOfRespHandlers.MakeReservationHandler;
+import com.karolkusper.Projekt_TO_Kino.chainOfRespHandlers.ShowAvailableScreeningsHandler;
+import com.karolkusper.Projekt_TO_Kino.chainOfRespHandlers.ShowFilmDetailsHandler;
 import com.karolkusper.Projekt_TO_Kino.service.CinemaService;
+import com.karolkusper.Projekt_TO_Kino.chainOfRespHandlers.CancelReservationHandler;
 
 import java.util.Scanner;
 
@@ -22,20 +26,17 @@ public class ClientCommand implements Command{
 
             switch (clientChoice) {
                 case 1:
-                    new ShowAvailableScreeningsCommand(cinemaService).execute();
+                    new ShowAvailableScreeningsHandler(cinemaService).handleRequest();
                     break;
                 case 2:
-                    System.out.println("Enter film id: ");
-                    int id = scanner.nextInt();
-                    new ShowFilmDetailsCommand(cinemaService,id).execute();
+
+                    new ShowFilmDetailsHandler(cinemaService).handleRequest();
                     break;
                 case 3:
-                    new MakeReservationCommand(cinemaService).execute();
+                    new MakeReservationHandler(cinemaService).handleRequest();
                     break;
                 case 4:
-                    System.out.println("Enter reservation id: ");
-                    int idRes = scanner.nextInt();
-                    new CancelReservationCommand(cinemaService,idRes).execute();
+                    new CancelReservationHandler(cinemaService).handleRequest();
                     break;
                 case 5:
                     System.out.println("Exiting client menu.");

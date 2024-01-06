@@ -1,0 +1,20 @@
+package com.karolkusper.Projekt_TO_Kino.chainOfRespHandlers;
+import com.karolkusper.Projekt_TO_Kino.command.AddFilmCommand;
+
+import com.karolkusper.Projekt_TO_Kino.service.CinemaService;
+
+
+public class AddFilmHandler extends BaseHandler{
+    private final CinemaService cinemaService;
+
+    public AddFilmHandler(CinemaService cinemaService) {
+        this.cinemaService = cinemaService;
+    }
+
+    @Override
+    public void handleRequest() {
+
+        new AddFilmCommand(cinemaService).execute();
+
+    }
+}

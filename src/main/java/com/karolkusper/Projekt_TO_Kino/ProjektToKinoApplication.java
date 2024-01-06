@@ -2,7 +2,6 @@ package com.karolkusper.Projekt_TO_Kino;
 
 import com.karolkusper.Projekt_TO_Kino.chainOfRespHandlers.AdminHandler;
 import com.karolkusper.Projekt_TO_Kino.chainOfRespHandlers.ClientHandler;
-import com.karolkusper.Projekt_TO_Kino.console.ConsoleMenu;
 import com.karolkusper.Projekt_TO_Kino.service.CinemaService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -32,6 +31,7 @@ public class ProjektToKinoApplication {
 				System.out.println("1. Wejdz jako administrator");
 				System.out.println("2. Wejdz jako klient kina");
 				System.out.println("3. Wyjście");
+				System.out.println();
 
 				choice = scanner.nextInt();
 
