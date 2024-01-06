@@ -25,4 +25,9 @@ public class CinemaService {
         allFilms.forEach(System.out::println);
     }
 
+    public void showAdminMenu() {
+    }
+
+    public void showClientMenu() {
+    }
 }
