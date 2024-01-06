@@ -26,8 +26,18 @@ public class CinemaService {
     }
 
     public void showAdminMenu() {
+        System.out.println("1. Continue as Admin");
+        System.out.println("2. Continue as Client");
+        System.out.println("3. Exit");
+        System.out.print("Enter your choice: ");
     }
 
     public void showClientMenu() {
+        System.out.println("1. Show available screenings");
+        System.out.println("2. Show film details");
+        System.out.println("3. Make a reservation");
+        System.out.println("4. Cancel reservation");
+        System.out.println("5. Exit");
+        System.out.print("Enter your choice: ");
     }
 }
