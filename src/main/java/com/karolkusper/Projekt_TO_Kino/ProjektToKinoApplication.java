@@ -22,7 +22,7 @@ public class ProjektToKinoApplication {
 		return runner -> {
 			AdminHandler adminHandler = new AdminHandler(cinemaService);
 			ClientHandler clientHandler = new ClientHandler(cinemaService);
-			adminHandler.setNextHandler(clientHandler);
+			//adminHandler.setNextHandler(clientHandler);
 
 			Scanner scanner = new Scanner(System.in);
 			int choice;

@@ -16,11 +16,11 @@ public class AdminHandler extends BaseHandler{
     @Override
     public void handleRequest() {
 
+            //przeniesc to do osobnej metody walidacyjnej
             Scanner scanner = new Scanner(System.in);
             System.out.println("Enter admin password: ");
             String enteredPassword = scanner.nextLine();
 
-            // Wpisanie hasła logiczne
             if (cinemaService.checkAdminPassword(enteredPassword)) {
                 new AdminCommand(cinemaService).execute();
             } else {
