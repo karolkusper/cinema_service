@@ -1,4 +1,7 @@
 package com.karolkusper.Projekt_TO_Kino.chainOfRespHandlers;
+import com.karolkusper.Projekt_TO_Kino.Validators.FloatValidator;
+import com.karolkusper.Projekt_TO_Kino.Validators.IntegerValidator;
+import com.karolkusper.Projekt_TO_Kino.Validators.TextValidator;
 import com.karolkusper.Projekt_TO_Kino.command.AddFilmCommand;
 
 import com.karolkusper.Projekt_TO_Kino.service.CinemaService;
@@ -21,15 +24,19 @@ public class AddFilmHandler extends BaseHandler{
         float rating;
 
         Scanner scanner = new Scanner(System.in);
+        TextValidator textValidator = TextValidator.getInstance();
+        IntegerValidator integerValidator = IntegerValidator.getInstance();
+        FloatValidator floatValidator = FloatValidator.getInstance();
+
         System.out.println("To add new movie to database fill in those information");
         System.out.println("Title: ");
-        title=scanner.nextLine();
+        title= textValidator.validate(scanner);
         System.out.println("Director: ");
-        director=scanner.nextLine();
+        director=textValidator.validate(scanner);
         System.out.println("Release Year: ");
-        releaseYear=Integer.parseInt(scanner.nextLine());
+        releaseYear= integerValidator.validate(scanner);
         System.out.println("Rating: ");
-        rating=Float.parseFloat(scanner.nextLine());
+        rating= floatValidator.validate(scanner);
 
         new AddFilmCommand(cinemaService,title,director,releaseYear,rating).execute();
 
