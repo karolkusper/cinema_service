@@ -15,3 +15,6 @@ Prototyp może pomóc stworzyć historię, zapisując kopie Poleceń.
 Obsługujący w Łańcuchu zobowiązań mogą być zaimplementowani jako Polecenia. Można wówczas wykonać wiele różnych działań reprezentowanych jako żądania na tym samym obiekcie-kontekście.
 
 Istnieje jednak jeszcze jedno podejście, według którego samo żądanie jest obiektem Polecenie. W takim przypadku możesz wykonać to samo działanie na łańcuchu różnych kontekstów.
+
+
+Można stosować Polecenie i Pamiątkę jednocześnie — implementując funkcjonalność “cofnij”. W takim przypadku, polecenia są odpowiedzialne za wykonywanie różnych działań na obiekcie docelowym, zaś pamiątki służą zapamiętaniu stanu obiektu tuż przed wykonaniem polecenia.
