@@ -1,10 +1,10 @@
 package com.karolkusper.Projekt_TO_Kino.chainOfRespHandlers;
 
-import com.karolkusper.Projekt_TO_Kino.command.ClientCommand;
 import com.karolkusper.Projekt_TO_Kino.service.CinemaService;
 
-public class ClientHandler extends BaseHandler
-{
+import java.util.Scanner;
+
+public class ClientHandler extends BaseHandler {
     private final CinemaService cinemaService;
 
     public ClientHandler(CinemaService cinemaService) {
@@ -13,8 +13,38 @@ public class ClientHandler extends BaseHandler
 
     @Override
     public void handleRequest() {
+        Scanner scanner = new Scanner(System.in);
+        int clientChoice;
 
-        new ClientCommand(cinemaService).execute();
+        do {
+            cinemaService.showClientMenu();
+            clientChoice = scanner.nextInt();
 
+            switch (clientChoice) {
+                case 1:
+                    setNextHandler(new ShowAvailableScreeningsHandler(cinemaService));
+                    break;
+                case 2:
+                    setNextHandler(new ShowFilmDetailsHandler(cinemaService));
+                    break;
+                case 3:
+                    setNextHandler(new MakeReservationHandler(cinemaService));
+                    break;
+                case 4:
+                    setNextHandler(new CancelReservationHandler(cinemaService));
+                    break;
+                case 5:
+                    System.out.println("Exiting client menu.");
+                    setNextHandler(null);
+                    break;
+                default:
+                    System.out.println("Invalid choice.");
+                    setNextHandler(null);
+                    break;
+            }
+
+            super.handleRequest();
+
+        } while (clientChoice != 5);
     }
 }

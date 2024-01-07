@@ -13,49 +13,49 @@ import java.util.Scanner;
 @SpringBootApplication
 public class ProjektToKinoApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(ProjektToKinoApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(ProjektToKinoApplication.class, args);
+    }
 
-	@Bean
-	public CommandLineRunner commandLineRunner(CinemaService cinemaService) {
-		return runner -> {
-			AdminHandler adminHandler = new AdminHandler(cinemaService);
-			ClientHandler clientHandler = new ClientHandler(cinemaService);
-			//adminHandler.setNextHandler(clientHandler);
+    @Bean
+    public CommandLineRunner commandLineRunner(CinemaService cinemaService) {
+        return runner -> {
+            AdminHandler adminHandler = new AdminHandler(cinemaService);
+            ClientHandler clientHandler = new ClientHandler(cinemaService);
+            //adminHandler.setNextHandler(clientHandler);
 
-			Scanner scanner = new Scanner(System.in);
-			int choice;
+            Scanner scanner = new Scanner(System.in);
+            int choice;
 
-			do {
-				System.out.println("1. Wejdz jako administrator");
-				System.out.println("2. Wejdz jako klient kina");
-				System.out.println("3. Wyjście");
-				System.out.println();
+            do {
+                System.out.println("1. Wejdz jako administrator");
+                System.out.println("2. Wejdz jako klient kina");
+                System.out.println("3. Wyjście");
+                System.out.println();
 
-				choice = scanner.nextInt();
+                choice = scanner.nextInt();
 
-				switch (choice) {
-					case (1)-> {
-						adminHandler.handleRequest();
-					}
-					case (2)-> {
-						clientHandler.handleRequest();
-					}
-					case(3)-> {
-						System.out.println("Koncze program");
+                switch (choice) {
+                    case (1) -> {
+                        adminHandler.handleRequest();
+                    }
+                    case (2) -> {
+                        clientHandler.handleRequest();
+                    }
+                    case (3) -> {
+                        System.out.println("Koncze program");
 
-					}
-					default -> {
-						System.out.println("Niepoprawna opcja");
-					}
-				}
+                    }
+                    default -> {
+                        System.out.println("Niepoprawna opcja");
+                    }
+                }
 
 
-			} while (choice != 3);
+            } while (choice != 3);
 
-			System.out.println("Zakończono program.");
-		};
-		};
-	}
+            System.out.println("Zakończono program.");
+        };
+    }
+}
 
