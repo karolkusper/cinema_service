@@ -42,8 +42,8 @@ public class CinemaService {
         System.out.println("\nAdding sreening");
     }
 
-    public void addFilm() {
-        System.out.println("\nAdding new film");
+    public void addFilm(String title, String director, int releaseYear,float rating) {
+        filmRepository.saveAndFlush(new Film(title, director, releaseYear, rating));
     }
 
     public void displayReservations() {
