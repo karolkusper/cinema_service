@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CinemaService {
@@ -73,7 +74,14 @@ public class CinemaService {
     }
 
     public void showFilmDetails(int filmId) {
-        System.out.println("\nShow details about film of id: "+filmId);
+        Optional<Film> filmById = filmRepository.findById(filmId);
+        if(filmById.isPresent())
+        {
+            System.out.println(filmById.get());
+        }
+        else{
+            System.out.println("There is no such movie in out cinema!");
+        }
     }
 
 

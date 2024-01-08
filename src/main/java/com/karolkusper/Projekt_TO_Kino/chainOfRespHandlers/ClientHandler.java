@@ -22,10 +22,12 @@ public class ClientHandler extends BaseHandler {
 
             switch (clientChoice) {
                 case 1:
-                    setNextHandler(new ShowAvailableMoviesHandler(cinemaService));
+                    setNextHandler(new ShowAvailableScreeningsHandler(cinemaService));
                     break;
                 case 2:
-                    setNextHandler(new ShowFilmDetailsHandler(cinemaService));
+                    ShowAvailableScreeningsHandler showAvailableScreeningsHandler1 = new ShowAvailableScreeningsHandler(cinemaService);
+                    showAvailableScreeningsHandler1.setNextHandler(new ShowFilmDetailsHandler(cinemaService));
+                    setNextHandler(showAvailableScreeningsHandler1);
                     break;
                 case 3:
                     ShowAvailableScreeningsHandler showAvailableScreeningsHandler = new ShowAvailableScreeningsHandler(cinemaService);
