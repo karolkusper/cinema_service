@@ -43,5 +43,7 @@ public class AddScreeningHandler extends BaseHandler{
 
         new AddScreeningCommand(cinemaService,filmId,dateAndTime,hall).execute();
 
+        super.handleRequest();
+
     }
 }

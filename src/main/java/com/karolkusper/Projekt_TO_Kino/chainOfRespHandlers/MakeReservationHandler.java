@@ -13,5 +13,6 @@ public class MakeReservationHandler extends BaseHandler{
 
         new MakeReservationCommand(cinemaService).execute();
 
+        super.handleRequest();
     }
 }

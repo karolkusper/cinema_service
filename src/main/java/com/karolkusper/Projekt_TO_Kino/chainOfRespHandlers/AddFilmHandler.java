@@ -42,5 +42,7 @@ public class AddFilmHandler extends BaseHandler{
 
         System.out.println("Movie added to database.");
 
+        super.handleRequest();
+
     }
 }

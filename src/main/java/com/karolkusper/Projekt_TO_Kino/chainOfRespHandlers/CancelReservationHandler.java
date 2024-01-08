@@ -20,5 +20,7 @@ public class CancelReservationHandler extends BaseHandler {
         int id = scanner.nextInt();
         new CancelReservationsCommand(cinemaService,id).execute();
 
+        super.handleRequest();
+
     }
 }

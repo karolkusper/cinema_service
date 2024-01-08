@@ -17,5 +17,7 @@ public class ShowFilmDetailsHandler extends BaseHandler{
         int id = scanner.nextInt();
         new ShowFilmDetailsCommand(cinemaService,id).execute();
 
+        super.handleRequest();
+
     }
 }

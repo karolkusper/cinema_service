@@ -17,5 +17,7 @@ public class DisplayReservationHandler extends BaseHandler{
 
         new DisplayReservationsCommand(cinemaService).execute();
 
+        super.handleRequest();
+
     }
 }
