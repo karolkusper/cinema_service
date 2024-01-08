@@ -4,28 +4,33 @@ import com.karolkusper.Projekt_TO_Kino.console.AdminMenu;
 import com.karolkusper.Projekt_TO_Kino.console.ClientMenu;
 import com.karolkusper.Projekt_TO_Kino.dao.ClientRepository;
 import com.karolkusper.Projekt_TO_Kino.dao.FilmRepository;
+import com.karolkusper.Projekt_TO_Kino.dao.ScreeningRepository;
 import com.karolkusper.Projekt_TO_Kino.entity.Film;
+import com.karolkusper.Projekt_TO_Kino.entity.Screening;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
 public class CinemaService {
     private final FilmRepository filmRepository;
+    private final ScreeningRepository screeningRepository;
     private final ClientRepository clientRepository;
 
 
     private final String password="haslo";
 
     @Autowired
-    public CinemaService(FilmRepository filmRepository, ClientRepository clientRepository) {
+    public CinemaService(FilmRepository filmRepository, ClientRepository clientRepository,ScreeningRepository screeningRepository) {
         this.filmRepository = filmRepository;
         this.clientRepository = clientRepository;
+        this.screeningRepository=screeningRepository;
     }
 
     // Implementacja logiki biznesowej z wykorzystaniem repozytoriów
-    public void showAvailableScreenings() {
+    public void showAvailableMovies() {
         List<Film> allFilms = filmRepository.findAll();
         allFilms.forEach(System.out::println);
     }
@@ -38,8 +43,9 @@ public class CinemaService {
         ClientMenu.showClientMenu();
     }
 
-    public void addScreening() {
-        System.out.println("\nAdding sreening");
+    public void addScreening(int filmId, Date dateAndTime, String hall) {
+        screeningRepository.saveAndFlush(new Screening(filmId,dateAndTime,hall));
+
     }
 
     public void addFilm(String title, String director, int releaseYear,float rating) {

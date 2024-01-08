@@ -22,7 +22,7 @@ public class ClientHandler extends BaseHandler {
 
             switch (clientChoice) {
                 case 1:
-                    setNextHandler(new ShowAvailableScreeningsHandler(cinemaService));
+                    setNextHandler(new ShowAvailableMoviesHandler(cinemaService));
                     break;
                 case 2:
                     setNextHandler(new ShowFilmDetailsHandler(cinemaService));

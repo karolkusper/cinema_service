@@ -21,7 +21,6 @@ public class AdminHandler extends BaseHandler{
             String enteredPassword = scanner.nextLine();
 
             if (cinemaService.checkAdminPassword(enteredPassword)) {
-                //new AdminCommand(cinemaService).execute();
                 int adminChoice;
 
                 do {
@@ -30,19 +29,18 @@ public class AdminHandler extends BaseHandler{
 
                     switch (adminChoice) {
                         case 1:
-//                            new AddScreeningHandler(cinemaService).handleRequest();
-                            setNextHandler(new AddScreeningHandler(cinemaService));
+                            //setNextHandler(new AddScreeningHandler(cinemaService));
+                            ShowAvailableMoviesHandler showAvailableMoviesHandler = new ShowAvailableMoviesHandler(cinemaService);
+                            showAvailableMoviesHandler.setNextHandler(new AddScreeningHandler(cinemaService));
+                            setNextHandler(showAvailableMoviesHandler);
                             break;
                         case 2:
-//                            new AddFilmHandler(cinemaService).handleRequest();
                             setNextHandler(new AddFilmHandler(cinemaService));
                             break;
                         case 3:
-//                           new DisplayReservationHandler(cinemaService).handleRequest();
                             setNextHandler(new DisplayReservationHandler(cinemaService));
                             break;
                         case 4:
-//                            new CancelReservationHandler(cinemaService).handleRequest();
                             setNextHandler(new CancelReservationHandler(cinemaService));
                             break;
                         case 5:

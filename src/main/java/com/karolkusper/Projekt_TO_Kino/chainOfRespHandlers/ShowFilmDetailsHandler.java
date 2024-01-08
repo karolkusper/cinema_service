@@ -1,6 +1,5 @@
 package com.karolkusper.Projekt_TO_Kino.chainOfRespHandlers;
 
-import com.karolkusper.Projekt_TO_Kino.command.ShowAvailableScreeningsCommand;
 import com.karolkusper.Projekt_TO_Kino.command.ShowFilmDetailsCommand;
 import com.karolkusper.Projekt_TO_Kino.service.CinemaService;
 

@@ -21,19 +21,16 @@ public class Screening {
     @Column(name="hall")
     String hall;
 
-    @Column(name="availability")
-    Boolean isPlayed;
 
     public Screening()
     {
 
     }
 
-    public Screening(int filmId, Date date, String hall, Boolean isPlayed) {
+    public Screening(int filmId, Date date, String hall) {
         this.filmId = filmId;
         this.date = date;
         this.hall = hall;
-        this.isPlayed = isPlayed;
     }
 
     public int getScreeningId() {
@@ -68,14 +65,6 @@ public class Screening {
         this.hall = hall;
     }
 
-    public Boolean getPlayed() {
-        return isPlayed;
-    }
-
-    public void setPlayed(Boolean played) {
-        isPlayed = played;
-    }
-
     @Override
     public String toString() {
         return "Screening{" +
@@ -83,7 +72,6 @@ public class Screening {
                 ", filmId=" + filmId +
                 ", date=" + date +
                 ", hall='" + hall + '\'' +
-                ", isPlayed=" + isPlayed +
                 '}';
     }
 }

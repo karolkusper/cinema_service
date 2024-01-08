@@ -2,14 +2,14 @@ package com.karolkusper.Projekt_TO_Kino.command;
 
 import com.karolkusper.Projekt_TO_Kino.service.CinemaService;
 
-public class ShowAvailableScreeningsCommand implements Command{
+public class ShowAvailableMoviesCommand implements Command{
     private CinemaService cinemaService;
-    public ShowAvailableScreeningsCommand(CinemaService cinemaService) {
+    public ShowAvailableMoviesCommand(CinemaService cinemaService) {
         this.cinemaService=cinemaService;
     }
 
     @Override
     public void execute() {
-        cinemaService.showAvailableScreenings();
+        cinemaService.showAvailableMovies();
     }
 }
