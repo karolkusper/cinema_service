@@ -80,7 +80,7 @@ public class CinemaService {
             System.out.println(filmById.get());
         }
         else{
-            System.out.println("There is no such movie in out cinema!");
+            System.out.println("There is no such movie in our cinema!");
         }
     }
 
@@ -92,5 +92,8 @@ public class CinemaService {
     public void showAvailableScreenings() {
         List<Screening> allScreenigns = screeningRepository.findAll();
         allScreenigns.forEach(System.out::println);
+    }
+    public List<Screening> getAvailableScreenings() {
+        return screeningRepository.findAll();
     }
 }

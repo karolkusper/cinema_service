@@ -1,20 +1,33 @@
-Wzorzec fabryki może być używany do tworzenia obiektów, takich jak filmy, seanse, rezerwacje, itp.
-Wzorzec strategii może być używany do różnych strategii obsługi rezerwacji.
-Wzorzec obserwatora może być używany do informowania użytkowników o zmianach w dostępności biletów.
+TO DO:
+do administratora:
+
+w dodawaniu screeningow sprawdzać:
+    czy taki seans juz nie jest w bazie
+    czy film o wpisywanym id istnieje w bazie
+    czy o danej dacie w danej hali nie ma juz jakiegos filmu
+    sprawdzac czy hale to A,B,C lub D
+    sprawdzac czy godziny sa miedzy 8:00 a 24:00
+w dodawaniu filmu sprawdzac:
+    czy dany film juz nie jest w bazie
+    czy wpisywany rating jest od 0-10
+    czy rok produkcji jest po 1888 r
+w usuwaniu rezerwacji:
+    sprawdzac czy rezerwacja o danym id istnieje
 
 
-Polecenie wykorzystam do obsługi menu. Każda opcja menu wywoła odpowiednie polecenie. 
 
-Można stosować Polecenie i Pamiątkę jednocześnie — implementując funkcjonalność “cofnij”. W takim przypadku, polecenia są odpowiedzialne za wykonywanie różnych działań na obiekcie docelowym, zaś pamiątki służą zapamiętaniu stanu obiektu tuż przed wykonaniem polecenia.
+do klienta:
 
+w Show available screenings:
+    zamiast film_id wyswietlac dane o filmie DONE
+w Show film details:
+    usunac ta opcje z menu i wykorzystac przy wysietlaniu seansow
+    mozna zamiast tego wyswietlac wszystkie filmy z kina
+w Make a reservation:
+    sprawdzac czy dany seans istnieje ( o id ktore wpisujemy)
+    sprwadzac czy seat i row sa poprawne (wartosci 1-10)
+    sprwadzac czy dane miejsce na dany seans nie jest juz zajete !!!
 
-Prototyp może pomóc stworzyć historię, zapisując kopie Poleceń.
-
-
-
-Obsługujący w Łańcuchu zobowiązań mogą być zaimplementowani jako Polecenia. Można wówczas wykonać wiele różnych działań reprezentowanych jako żądania na tym samym obiekcie-kontekście.
-
-Istnieje jednak jeszcze jedno podejście, według którego samo żądanie jest obiektem Polecenie. W takim przypadku możesz wykonać to samo działanie na łańcuchu różnych kontekstów.
-
-
-Można stosować Polecenie i Pamiątkę jednocześnie — implementując funkcjonalność “cofnij”. W takim przypadku, polecenia są odpowiedzialne za wykonywanie różnych działań na obiekcie docelowym, zaś pamiątki służą zapamiętaniu stanu obiektu tuż przed wykonaniem polecenia.
+w Cancel reservation
+    upewnic sie ze wyswietla sie tylko rezerwacje o podanym nazwisku a nie wszystkie
+    zeby nie dalo sie usunac innych niz te wyswietlone
