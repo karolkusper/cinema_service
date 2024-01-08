@@ -28,7 +28,10 @@ public class ClientHandler extends BaseHandler {
                     setNextHandler(new ShowFilmDetailsHandler(cinemaService));
                     break;
                 case 3:
-                    setNextHandler(new MakeReservationHandler(cinemaService));
+                    ShowAvailableScreeningsHandler showAvailableScreeningsHandler = new ShowAvailableScreeningsHandler(cinemaService);
+                    showAvailableScreeningsHandler.setNextHandler(new AddReservationHandler(cinemaService));
+                    setNextHandler(showAvailableScreeningsHandler);
+                    //setNextHandler(new MakeReservationHandler(cinemaService));
                     break;
                 case 4:
                     setNextHandler(new CancelReservationHandler(cinemaService));

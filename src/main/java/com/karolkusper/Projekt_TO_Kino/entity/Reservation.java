@@ -17,6 +17,9 @@ public class Reservation {
     @Column(name="seat")
     int seat;
 
+    @Column(name="number_row")
+    int rowNumber;
+
     @Column(name="client_name")
     String clientName;
     @Column(name="client_email")
@@ -28,9 +31,10 @@ public class Reservation {
     public Reservation(){
 
     }
-    public Reservation(int screeningId, int seat, String clientName, String clientEmail) {
+    public Reservation(int screeningId, int seat,int rowNumber, String clientName, String clientEmail) {
         this.screeningId = screeningId;
         this.seat = seat;
+        this.rowNumber=rowNumber;
         this.clientName = clientName;
         this.clientEmail = clientEmail;
 //        this.clientId=clientId;
@@ -40,42 +44,28 @@ public class Reservation {
         return reservationId;
     }
 
-    public void setReservationId(int reservationId) {
-        this.reservationId = reservationId;
-    }
 
     public int getScreeningId() {
         return screeningId;
     }
 
-    public void setScreeningId(int screeningId) {
-        this.screeningId = screeningId;
-    }
 
     public int getSeat() {
         return seat;
     }
 
-    public void setSeat(int seat) {
-        this.seat = seat;
+    public int getRowNumber() {
+        return rowNumber;
     }
 
     public String getClientName() {
         return clientName;
     }
 
-    public void setClientName(String clientName) {
-        this.clientName = clientName;
-    }
 
     public String getClientEmail() {
         return clientEmail;
     }
-
-    public void setClientEmail(String clientEmail) {
-        this.clientEmail = clientEmail;
-    }
-
 
 
     @Override
@@ -84,6 +74,7 @@ public class Reservation {
                 "reservationId=" + reservationId +
                 ", screeningId=" + screeningId +
                 ", seat=" + seat +
+                ", row=" + rowNumber +
                 ", clientName='" + clientName + '\'' +
                 ", clientEmail='" + clientEmail + '\'' +
                 '}';

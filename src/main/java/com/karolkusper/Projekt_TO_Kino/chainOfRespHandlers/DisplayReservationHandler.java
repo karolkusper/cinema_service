@@ -15,6 +15,7 @@ public class DisplayReservationHandler extends BaseHandler{
     @Override
     public void handleRequest() {
 
+        System.out.println("\nDisplaying reservations:");
         new DisplayReservationsCommand(cinemaService).execute();
 
         super.handleRequest();

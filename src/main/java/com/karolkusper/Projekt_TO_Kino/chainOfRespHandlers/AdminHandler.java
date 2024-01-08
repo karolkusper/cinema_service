@@ -29,7 +29,6 @@ public class AdminHandler extends BaseHandler{
 
                     switch (adminChoice) {
                         case 1:
-                            //setNextHandler(new AddScreeningHandler(cinemaService));
                             ShowAvailableMoviesHandler showAvailableMoviesHandler = new ShowAvailableMoviesHandler(cinemaService);
                             showAvailableMoviesHandler.setNextHandler(new AddScreeningHandler(cinemaService));
                             setNextHandler(showAvailableMoviesHandler);
