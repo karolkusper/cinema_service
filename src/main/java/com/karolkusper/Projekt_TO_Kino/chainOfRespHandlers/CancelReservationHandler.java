@@ -1,5 +1,6 @@
 package com.karolkusper.Projekt_TO_Kino.chainOfRespHandlers;
 
+import com.karolkusper.Projekt_TO_Kino.Validators.IntegerValidator;
 import com.karolkusper.Projekt_TO_Kino.command.CancelReservationCommand;
 import com.karolkusper.Projekt_TO_Kino.command.CancelReservationsCommand;
 import com.karolkusper.Projekt_TO_Kino.command.DisplayReservationsCommand;
@@ -16,9 +17,13 @@ public class CancelReservationHandler extends BaseHandler {
     public void handleRequest() {
 
         Scanner scanner = new Scanner(System.in);
+        IntegerValidator integerValidator = IntegerValidator.getInstance();
+
         System.out.println("Enter reservation id: ");
-        int id = scanner.nextInt();
+        int id = integerValidator.validate(scanner);
         new CancelReservationsCommand(cinemaService,id).execute();
+
+        System.out.printf("Reservation of id="+id+" was deleted!");
 
         super.handleRequest();
 

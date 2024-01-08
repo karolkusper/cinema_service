@@ -69,7 +69,7 @@ public class CinemaService {
     }
 
     public void cancelReservation(int reservationId) {
-        System.out.println("\nCanceling reservation od id="+reservationId);
+        reservationRepository.deleteById(reservationId);
     }
 
     public void showFilmDetails(int filmId) {

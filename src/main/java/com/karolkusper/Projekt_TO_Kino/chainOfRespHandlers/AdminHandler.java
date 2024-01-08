@@ -40,7 +40,9 @@ public class AdminHandler extends BaseHandler{
                             setNextHandler(new DisplayReservationHandler(cinemaService));
                             break;
                         case 4:
-                            setNextHandler(new CancelReservationHandler(cinemaService));
+                            DisplayReservationHandler displayReservationHandler = new DisplayReservationHandler(cinemaService);
+                            displayReservationHandler.setNextHandler(new CancelReservationHandler(cinemaService));
+                            setNextHandler(displayReservationHandler);
                             break;
                         case 5:
                             System.out.println("Exiting admin menu.");
