@@ -66,6 +66,11 @@ public class CinemaService {
         reservations.forEach(System.out::println);
     }
 
+    public List<Reservation> getReservations()
+    {
+        return reservationRepository.findAll();
+    }
+
     public List<Reservation> getReservationsByEmail(String email)
     {
         return reservationRepository.getReservationsByEmail(email);
