@@ -11,4 +11,7 @@ import java.util.List;
 public interface ReservationRepository extends JpaRepository<Reservation,Integer> {
     @Query("SELECT r FROM Reservation r WHERE r.screeningId = :screeningId")
     List<Reservation> findByScreeningId(@Param("screeningId") int screeningId);
+
+    @Query("SELECT r FROM Reservation r WHERE r.clientEmail = :clientEmail")
+    List<Reservation> getReservationsByEmail(@Param("clientEmail") String clientEmail);
 }

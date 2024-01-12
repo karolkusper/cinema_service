@@ -66,6 +66,17 @@ public class CinemaService {
         reservations.forEach(System.out::println);
     }
 
+    public List<Reservation> getReservationsByEmail(String email)
+    {
+        return reservationRepository.getReservationsByEmail(email);
+    }
+
+    public Optional<Reservation> getReservationById(int id)
+    {
+        return reservationRepository.findById(id);
+
+    }
+
     public Map<Integer, List<Integer>> getFreeSpots(int screeningId) {
         // Utwórz mapę reprezentującą wszystkie miejsca w kinie
         Map<Integer, List<Integer>> allSpots = new HashMap<>();

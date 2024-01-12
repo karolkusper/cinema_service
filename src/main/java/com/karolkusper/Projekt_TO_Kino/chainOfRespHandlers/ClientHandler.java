@@ -34,9 +34,12 @@ public class ClientHandler extends BaseHandler {
                     //setNextHandler(new MakeReservationHandler(cinemaService));
                     break;
                 case 4:
-                    setNextHandler(new CancelReservationHandler(cinemaService));
+                    setNextHandler(new CancelReservationClientHandler(cinemaService));
                     break;
                 case 5:
+                    setNextHandler(new DisplayReservationClientHandler(cinemaService));
+                    break;
+                case 6:
                     System.out.println("Exiting client menu.");
                     setNextHandler(null);
                     break;
@@ -48,6 +51,6 @@ public class ClientHandler extends BaseHandler {
 
             super.handleRequest();
 
-        } while (clientChoice != 5);
+        } while (clientChoice != 6);
     }
 }

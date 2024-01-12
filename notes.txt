@@ -17,11 +17,6 @@ w usuwaniu rezerwacji:
 
 
 do klienta:
-w Make a reservation:
-    sprawdzac czy dany seans istnieje ( o id ktore wpisujemy)
-    sprwadzac czy seat i row sa poprawne (wartosci 1-10)
-    sprwadzac czy dane miejsce na dany seans nie jest juz zajete !!!
-
 w Cancel reservation
     upewnic sie ze wyswietla sie tylko rezerwacje o podanym nazwisku a nie wszystkie
     zeby nie dalo sie usunac innych niz te wyswietlone

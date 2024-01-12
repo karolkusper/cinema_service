@@ -17,4 +17,5 @@ public class BaseDecorator<T> implements Validator<T>{
     public T validate(Scanner scanner) {
         return validator.validate(scanner);
     }
+
 }
