@@ -11,9 +11,8 @@ import com.karolkusper.Projekt_TO_Kino.entity.Screening;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class CinemaService {
@@ -61,9 +60,63 @@ public class CinemaService {
     }
 
 
+
     public void displayReservations() {
         List<Reservation> reservations = reservationRepository.findAll();
         reservations.forEach(System.out::println);
+    }
+
+    public Map<Integer, List<Integer>> getFreeSpots(int screeningId) {
+        // Utwórz mapę reprezentującą wszystkie miejsca w kinie
+        Map<Integer, List<Integer>> allSpots = new HashMap<>();
+        int totalRows = 10;
+        int seatsPerRow = 10;
+
+        for (int row = 1; row <= totalRows; row++) {
+            List<Integer> seatsInRow = new ArrayList<>();
+            for (int seat = 1; seat <= seatsPerRow; seat++) {
+                seatsInRow.add(seat);
+            }
+            allSpots.put(row, seatsInRow);
+        }
+
+        // Pobierz listę zajętych miejsc na podstawie rezerwacji
+        List<Reservation> reservations = reservationRepository.findByScreeningId(screeningId);
+        for (Reservation reservation : reservations) {
+            // Usuń zajęte miejsce z mapy
+            int rowNumber = reservation.getRowNumber();
+            int seatNumber = reservation.getSeat();
+
+            if (allSpots.containsKey(rowNumber)) {
+                allSpots.get(rowNumber).remove(Integer.valueOf(seatNumber));
+            }
+        }
+
+        // Zwróć mapę zawierającą wolne miejsca
+        return allSpots;
+    }
+
+    public Map<Integer, List<Integer>> getTakenSpots(int screeningId) {
+        // Pobierz listę zajętych miejsc na podstawie rezerwacji
+        List<Reservation> reservations = reservationRepository.findByScreeningId(screeningId);
+
+        // Utwórz mapę reprezentującą zajęte miejsca w kinie
+        Map<Integer, List<Integer>> takenSpots = new HashMap<>();
+
+        // Grupuj rezerwacje według numeru rzędu
+        Map<Integer, List<Reservation>> groupedReservations = reservations.stream()
+                .collect(Collectors.groupingBy(Reservation::getRowNumber));
+
+        // Mapuj zgrupowane rezerwacje na zajęte miejsca w danym rzędzie
+        for (Map.Entry<Integer, List<Reservation>> entry : groupedReservations.entrySet()) {
+            int rowNumber = entry.getKey();
+            List<Integer> takenSeats = entry.getValue().stream()
+                    .map(Reservation::getSeat)
+                    .collect(Collectors.toList());
+            takenSpots.put(rowNumber, takenSeats);
+        }
+
+        return takenSpots;
     }
 
     public void cancelReservation(int reservationId) {
@@ -92,5 +145,11 @@ public class CinemaService {
     }
     public List<Screening> getAvailableScreenings() {
         return screeningRepository.findAll();
+    }
+
+    public boolean isScreeningExist(int screeningId)
+    {
+        Optional<Screening> screening = screeningRepository.findById(screeningId);
+        return screening.isPresent();
     }
 }
