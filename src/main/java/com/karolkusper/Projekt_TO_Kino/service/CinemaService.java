@@ -163,4 +163,36 @@ public class CinemaService {
         Optional<Screening> screening = screeningRepository.findById(screeningId);
         return screening.isPresent();
     }
+
+    public boolean isFilmExist(int enteredFilmId) {
+        Optional<Film> byId = filmRepository.findById(enteredFilmId);
+        return byId.isPresent();
+    }
+
+    public boolean isScreeningTimeAvailable(Date dateTime, String hall) {
+        // Pobierz listę seansów dla danej sali
+        List<Screening> screeningsForHall = screeningRepository.getScreeningsByHall(hall);
+
+        // Iteruj przez listę seansów i sprawdź, czy istnieje seans o tej samej dacie i godzinie
+        for (Screening screening : screeningsForHall) {
+            Calendar calendarScreening = Calendar.getInstance();
+            calendarScreening.setTime(screening.getDate());
+
+            Calendar calendarDateTime = Calendar.getInstance();
+            calendarDateTime.setTime(dateTime);
+
+            // Porównaj daty z dokładnością do minuty
+            if (calendarScreening.get(Calendar.YEAR) == calendarDateTime.get(Calendar.YEAR) &&
+                    calendarScreening.get(Calendar.MONTH) == calendarDateTime.get(Calendar.MONTH) &&
+                    calendarScreening.get(Calendar.DAY_OF_MONTH) == calendarDateTime.get(Calendar.DAY_OF_MONTH) &&
+                    calendarScreening.get(Calendar.HOUR_OF_DAY) == calendarDateTime.get(Calendar.HOUR_OF_DAY) &&
+                    calendarScreening.get(Calendar.MINUTE) == calendarDateTime.get(Calendar.MINUTE)) {
+                return false; // Znaleziono seans o tej samej dacie i godzinie
+            }
+        }
+
+        // Nie znaleziono seansu o tej samej dacie i godzinie, więc jest dostępny
+        return true;
+    }
+
 }
