@@ -22,15 +22,14 @@ public class ProjektToKinoApplication {
         return runner -> {
             AdminHandler adminHandler = new AdminHandler(cinemaService);
             ClientHandler clientHandler = new ClientHandler(cinemaService);
-            //adminHandler.setNextHandler(clientHandler);
 
             Scanner scanner = new Scanner(System.in);
             int choice;
 
             do {
-                System.out.println("1. Wejdz jako administrator");
-                System.out.println("2. Wejdz jako klient kina");
-                System.out.println("3. Wyjście");
+                System.out.println("1. Enter as an admin");
+                System.out.println("2. Enter as cinema customer");
+                System.out.println("3. Exit");
                 System.out.println();
 
                 choice = scanner.nextInt();
@@ -43,18 +42,18 @@ public class ProjektToKinoApplication {
                         clientHandler.handleRequest();
                     }
                     case (3) -> {
-                        System.out.println("Koncze program");
+                        System.out.println("Ending the program ...");
 
                     }
                     default -> {
-                        System.out.println("Niepoprawna opcja");
+                        System.out.println("Not a valid choice!");
                     }
                 }
 
 
             } while (choice != 3);
 
-            System.out.println("Zakończono program.");
+            System.out.println("The program ended.");
         };
     }
 }
