@@ -25,9 +25,7 @@ public class ClientHandler extends BaseHandler {
                     setNextHandler(new ShowAvailableScreeningsHandler(cinemaService));
                     break;
                 case 2:
-                    ShowAvailableScreeningsHandler showAvailableScreeningsHandler1 = new ShowAvailableScreeningsHandler(cinemaService);
-                    showAvailableScreeningsHandler1.setNextHandler(new ShowFilmDetailsHandler(cinemaService));
-                    setNextHandler(showAvailableScreeningsHandler1);
+                    setNextHandler(new ShowAvailableMoviesHandler(cinemaService));
                     break;
                 case 3:
                     ShowAvailableScreeningsHandler showAvailableScreeningsHandler = new ShowAvailableScreeningsHandler(cinemaService);

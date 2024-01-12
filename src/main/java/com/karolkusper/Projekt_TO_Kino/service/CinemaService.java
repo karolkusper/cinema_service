@@ -2,7 +2,6 @@ package com.karolkusper.Projekt_TO_Kino.service;
 
 import com.karolkusper.Projekt_TO_Kino.console.AdminMenu;
 import com.karolkusper.Projekt_TO_Kino.console.ClientMenu;
-import com.karolkusper.Projekt_TO_Kino.dao.ClientRepository;
 import com.karolkusper.Projekt_TO_Kino.dao.FilmRepository;
 import com.karolkusper.Projekt_TO_Kino.dao.ReservationRepository;
 import com.karolkusper.Projekt_TO_Kino.dao.ScreeningRepository;
@@ -22,15 +21,13 @@ public class CinemaService {
     private final ScreeningRepository screeningRepository;
 
     private final ReservationRepository reservationRepository;
-    private final ClientRepository clientRepository;
 
 
     private final String password="haslo";
 
     @Autowired
-    public CinemaService(FilmRepository filmRepository, ClientRepository clientRepository,ScreeningRepository screeningRepository, ReservationRepository reservationRepository) {
+    public CinemaService(FilmRepository filmRepository, ScreeningRepository screeningRepository, ReservationRepository reservationRepository) {
         this.filmRepository = filmRepository;
-        this.clientRepository = clientRepository;
         this.screeningRepository=screeningRepository;
         this.reservationRepository=reservationRepository;
     }
