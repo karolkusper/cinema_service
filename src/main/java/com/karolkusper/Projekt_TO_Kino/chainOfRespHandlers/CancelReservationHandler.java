@@ -4,8 +4,10 @@ import com.karolkusper.Projekt_TO_Kino.Validators.IntegerValidator;
 import com.karolkusper.Projekt_TO_Kino.command.CancelReservationCommand;
 import com.karolkusper.Projekt_TO_Kino.command.CancelReservationsCommand;
 import com.karolkusper.Projekt_TO_Kino.command.DisplayReservationsCommand;
+import com.karolkusper.Projekt_TO_Kino.entity.Reservation;
 import com.karolkusper.Projekt_TO_Kino.service.CinemaService;
 
+import java.util.Optional;
 import java.util.Scanner;
 
 public class CancelReservationHandler extends BaseHandler {
@@ -21,6 +23,12 @@ public class CancelReservationHandler extends BaseHandler {
 
         System.out.println("Enter reservation id: ");
         int id = integerValidator.validate(scanner);
+        Optional<Reservation> reservationOptional = cinemaService.getReservationById(id);
+        if(reservationOptional.isEmpty())
+        {
+            System.out.println("There is no reservation with this id in database!");
+            return;
+        }
         new CancelReservationsCommand(cinemaService,id).execute();
 
         System.out.printf("Reservation of id="+id+" was deleted!");
